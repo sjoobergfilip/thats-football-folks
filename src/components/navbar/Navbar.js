@@ -11,8 +11,11 @@ const Navbar = () => {
                 </Link>
             </div>
             <ul>
-                <Link className="links" to="/player">
-                    Player
+                <Link className="links" to="/players">
+                    Players
+                </Link>
+                <Link className="links" to="/become-a-scout">
+                    Become a Scout
                 </Link>
                 <Link className="links" to="/about">
                     About

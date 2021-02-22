@@ -1,6 +1,8 @@
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
-import Signup from "./components/login/Signup";
+import Login from "./components/login/Login";
+import BecomeAScout from "./components/becomeAScout/BecomeAScout";
+import Players from "./components/players/Players";
 import NotFound from "./components/notfound/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const App = () => {
@@ -12,12 +14,16 @@ const App = () => {
                     <Route path="/">
                         <Home />
                     </Route>
-                    <Route path="/signup">
-                        <Signup />
+                    <Route path="/players">
+                        <Players />
                     </Route>
-                    <Route path="*" element={<NotFound />}>
-                        <Signup />
+                    <Route path="/become-a-scout">
+                        <BecomeAScout />
                     </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="*" element={<NotFound />}></Route>
                 </Routes>
             </Router>
         </>
