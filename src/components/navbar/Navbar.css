@@ -3,7 +3,8 @@
     justify-content: space-between;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 0;
+    background-color: #080e13;
+    align-items: center;
 }
 
 .navbar ul {
@@ -11,8 +12,9 @@
     list-style: none;
 }
 
-.logo {
-    margin: 16px 40px;
+.img-logo {
+    margin-left: 25px;
+    width: 100px;
 }
 .login {
     margin: 16px 40px;
@@ -21,6 +23,6 @@
 
 .links {
     text-decoration: none;
-    color: black;
     margin-right: 20px;
+    color: #ffe700;
 }
