@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Work+Sans:wght@300&display=swap");
+
+.hero-container {
+    background-image: url("BackgroundHero.png"); /* The image used */
+    height: 80vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.slogan-container {
+    width: 400px;
+    padding-left: 100px;
+}
+
+.slogan-container h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: 45px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.slogan-container p {
+    font-family: "Work Sans", sans-serif;
+}
