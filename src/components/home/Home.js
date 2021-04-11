@@ -1,5 +1,8 @@
 import React from "react";
-import { StyledFilledButton, StyledOutlineButton } from "../styles/button";
+import {
+    StyledFilledButton,
+    StyledOutlineButton,
+} from "../styles/button/button";
 import "./Home.css";
 
 const Home = () => {
