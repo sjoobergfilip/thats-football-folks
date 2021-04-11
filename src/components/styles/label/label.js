@@ -24,3 +24,9 @@ export const StyledLabel = styled.label`
     text-transform: uppercase;
     font-size: 1.6rem;
 `;
+export const StyledForm = styled.form`
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;

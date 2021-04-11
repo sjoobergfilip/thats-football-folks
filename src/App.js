@@ -1,4 +1,5 @@
 import Navbar from "./components/navbar/Navbar";
+import SideNavbar from "./components/navbar/SideNavbar";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import BecomeAScout from "./components/becomeAScout/BecomeAScout";

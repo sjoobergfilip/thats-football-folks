@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import { LoginContainer, LoginContent } from "../styles/containers/container";
 import { StyledOutlineButton } from "../styles/button/button";
-import { StyledInput, StyledLabel } from "../styles/label/label";
+import { StyledInput, StyledLabel, StyledForm } from "../styles/label/label";
+import { StyledErrorMsg } from "../styles/errors/Error";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
@@ -32,8 +33,8 @@ const Signup = () => {
         <>
             <LoginContainer>
                 <LoginContent>
-                    {error && <div>{error}</div>}
-                    <form onSubmit={handleSubmit}>
+                    {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+                    <StyledForm onSubmit={handleSubmit}>
                         <StyledLabel>Email</StyledLabel>
                         <StyledInput
                             ref={emailRef}
@@ -47,7 +48,7 @@ const Signup = () => {
                             placeholder="password"
                         />
                         <StyledOutlineButton>Log In</StyledOutlineButton>
-                    </form>
+                    </StyledForm>
                 </LoginContent>
             </LoginContainer>
         </>
