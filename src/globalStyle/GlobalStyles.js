@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: "Work Sans", sans-serif;
   }
   
   body {
@@ -14,6 +15,9 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     width: 100%;
+  }
+  h1{
+    font-family: "Oswald", sans-serif;
   }
   
   `;

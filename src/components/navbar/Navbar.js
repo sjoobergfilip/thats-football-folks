@@ -2,8 +2,11 @@ import React from "react";
 import "./Navbar.css";
 import Logo from "./logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
+    const { currentUser } = useAuth();
+
     return (
         <nav className="navbar">
             <div className="logo">
@@ -22,9 +25,15 @@ const Navbar = () => {
                     About
                 </Link>
             </ul>
-            <Link className="links login" to="/login">
-                Log In
-            </Link>
+            {currentUser ? (
+                <Link className="links login" to="/dashboard">
+                    {currentUser.email}
+                </Link>
+            ) : (
+                <Link className="links login" to="/login">
+                    Log In
+                </Link>
+            )}
         </nav>
     );
 };
