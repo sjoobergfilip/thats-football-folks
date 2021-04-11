@@ -5,9 +5,11 @@ import BecomeAScout from "./components/becomeAScout/BecomeAScout";
 import Players from "./components/players/Players";
 import NotFound from "./components/notfound/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GlobalStyle from "./globalStyle/GlobalStyles";
 const App = () => {
     return (
         <>
+            <GlobalStyle />
             <Router>
                 <Navbar />
                 <Routes>
