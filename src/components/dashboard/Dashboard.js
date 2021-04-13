@@ -1,17 +1,15 @@
-import { StyledOutlineButton } from "../styles/button/button";
 import { useAuth } from "../../context/AuthContext";
 import React from "react";
 import SideNavbar from "../navbar/SideNavbar";
+import { DashboardContainer } from "../styles/containers/container";
 
 const Dashboard = () => {
-    const { logout } = useAuth();
-
-    const handelClick = () => {
-        logout();
-    };
     return (
         <>
             <SideNavbar />
+            <DashboardContainer>
+                <h1>Hej Filip</h1>
+            </DashboardContainer>
         </>
     );
 };

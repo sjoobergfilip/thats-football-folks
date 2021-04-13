@@ -32,9 +32,6 @@ export const NavSideBarContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    border-right: 1px solid ${({ theme }) => theme.colors.Yellow};
-
     padding-left: 10px;
     position: fixed;
     height: 85vh;
@@ -47,4 +44,40 @@ export const NavSideBarContent = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
+`;
+export const NavLinkContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+export const DashboardContainer = styled.div`
+    height: calc(100vh - 106px);
+    width: calc(100vw - 150px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ theme }) => theme.colors.Black};
+    filter: brightness(1.75);
+`;
+export const ContentContainer = styled.div`
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+`;
+export const TwoInputContainer = styled.div`
+    display: flex;
+    margin-bottom: 20px;
+`;
+export const OneInputContainer = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+`;
+
+export const FormContainer = styled.div`
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: ${({ theme }) => theme.colors.Yellow};
 `;

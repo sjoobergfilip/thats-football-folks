@@ -1,5 +1,4 @@
 import Navbar from "./components/navbar/Navbar";
-import SideNavbar from "./components/navbar/SideNavbar";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import BecomeAScout from "./components/becomeAScout/BecomeAScout";
@@ -10,6 +9,8 @@ import GlobalStyle from "./globalStyle/GlobalStyles";
 import AuthContextProvider from "./context/AuthContext";
 import AuthRouts from "./components/login/AuthRouts";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreatePlayer from "./components/dashboard/CreatePlayer";
+import MyPlayers from "./components/dashboard/MyPlayers";
 
 const App = () => {
     return (
@@ -33,6 +34,12 @@ const App = () => {
                         </Route>
                         <AuthRouts path="/dashboard">
                             <Dashboard />
+                        </AuthRouts>
+                        <AuthRouts path="/dashboard/create-player">
+                            <CreatePlayer />
+                        </AuthRouts>
+                        <AuthRouts path="/dashboard/my-players">
+                            <MyPlayers />
                         </AuthRouts>
                         <Route path="*" element={<NotFound />}></Route>
                     </Routes>
