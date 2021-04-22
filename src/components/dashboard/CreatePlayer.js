@@ -80,6 +80,63 @@ const CreatePlayer = () => {
                             <PlayerOption value="st">ST</PlayerOption>
                         </PlayerSelect>
                     </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Coverage</StyledLabel>
+                        <PlayerSelect name="position">
+                            <PlayerOption disabled selected value="coverage">
+                                Coverage
+                            </PlayerOption>
+                            <PlayerOption value="1-3">1-3 Games</PlayerOption>
+                            <PlayerOption value="4-6">4-6 Games</PlayerOption>
+                            <PlayerOption value="7-10">7-10 Games</PlayerOption>
+                            <PlayerOption value="+10">+10 Games</PlayerOption>
+                        </PlayerSelect>
+                    </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Potential</StyledLabel>
+                        <PlayerSelect name="potential">
+                            <PlayerOption disabled selected value="Position">
+                                Potential
+                            </PlayerOption>
+                            <PlayerOption value="1">1</PlayerOption>
+                            <PlayerOption value="2">2</PlayerOption>
+                            <PlayerOption value="3">3</PlayerOption>
+                            <PlayerOption value="4">4</PlayerOption>
+                            <PlayerOption value="5">5</PlayerOption>
+                        </PlayerSelect>
+                    </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Contract</StyledLabel>
+                        <PlayerSelect name="Contract">
+                            <PlayerOption disabled selected value="Position">
+                                Contract to
+                            </PlayerOption>
+                            <PlayerOption value="2021" aria-required="true">
+                                Free Transfer
+                            </PlayerOption>
+                            <PlayerOption value="2021">2021</PlayerOption>
+                            <PlayerOption value="2022">2022</PlayerOption>
+                            <PlayerOption value="2023">2023</PlayerOption>
+                            <PlayerOption value="2024">2024</PlayerOption>
+                            <PlayerOption value="2025">2025</PlayerOption>
+                            <PlayerOption value="2026">2026</PlayerOption>
+                        </PlayerSelect>
+                    </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Strength</StyledLabel>
+                        <PlayerInputFull type="text" placeholder="Strength" />
+                    </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Weakness</StyledLabel>
+                        <PlayerInputFull type="text" placeholder="Weakness" />
+                    </FormContainer>
+                    <FormContainer>
+                        <StyledLabel>Description</StyledLabel>
+                        <PlayerInputFull
+                            type="text"
+                            placeholder="Description"
+                        />
+                    </FormContainer>
                 </ContentContainer>
             </DashboardContainer>
         </>
