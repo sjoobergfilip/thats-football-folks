@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./globalStyle/Theme";
+import { CreatePlayerProvider } from "./context/CreatePlayerContext";
 
 ReactDOM.render(
     <React.StrictMode>
-        <ThemeProvider theme={Theme}>
-            <App />
-        </ThemeProvider>
+        <CreatePlayerProvider>
+            <ThemeProvider theme={Theme}>
+                <App />
+            </ThemeProvider>
+        </CreatePlayerProvider>
     </React.StrictMode>,
     document.getElementById("root")
 );
