@@ -8,7 +8,7 @@ import {
 
 const Players = () => {
     const [players, setPlayers] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
