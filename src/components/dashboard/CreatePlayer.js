@@ -23,7 +23,7 @@ import Spinner from "./Ellipsis-3.6s-51px.gif";
 const CreatePlayer = () => {
     const { handelSetFormInfo, formState } = useReport();
     const { currentUser } = useAuth();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const firstName = useRef("");
     const secondName = useRef("");
