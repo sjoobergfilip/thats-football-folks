@@ -4,7 +4,12 @@ import {
     Filter,
     PlayersContainer,
     EachPlayer,
+    InfoName,
+    InfoClub,
+    Collapsible,
 } from "../styles/containers/container";
+
+import { BigText, TeamText } from "../styles/text/Text";
 
 const Players = () => {
     const [players, setPlayers] = useState([]);
@@ -33,12 +38,30 @@ const Players = () => {
                 <PlayersContainer>
                     {players.map((player) => {
                         return (
-                            <EachPlayer>
-                                <h1>
-                                    {player.formState.firstName}{" "}
-                                    {player.formState.lastName}
-                                </h1>
-                            </EachPlayer>
+                            <>
+                                <EachPlayer>
+                                    <InfoName>
+                                        <BigText>
+                                            {player.formState.firstName}{" "}
+                                            {player.formState.lastName}
+                                        </BigText>
+                                    </InfoName>
+                                    <InfoClub>
+                                        <TeamText>
+                                            {player.formState.age} år
+                                        </TeamText>
+                                        <TeamText>
+                                            {player.formState.position}
+                                        </TeamText>
+                                        <TeamText>
+                                            {player.formState.team}
+                                        </TeamText>
+                                    </InfoClub>
+                                </EachPlayer>
+                                <Collapsible>
+                                    {player.formState.description}
+                                </Collapsible>
+                            </>
                         );
                     })}
                 </PlayersContainer>

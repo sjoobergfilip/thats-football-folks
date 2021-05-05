@@ -97,9 +97,30 @@ export const PlayersContainer = styled.div`
     width: 100%;
 `;
 export const EachPlayer = styled.div`
+    cursor: pointer;
     max-width: 760px;
     height: 100px;
     margin: 0 auto;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: ${({ theme }) => theme.colors.Black};
+    :nth-child(odd) {
+        filter: brightness(1.5);
+    }
+`;
+export const Collapsible = styled.div`
+    max-width: 760px;
+    height: 100px;
+    margin: 0 auto;
+    width: 100%;
+`;
+
+export const InfoName = styled.div`
+    align-self: center;
+    margin-left: 25px;
+`;
+export const InfoClub = styled.div`
+    align-self: center;
     display: flex;
 `;

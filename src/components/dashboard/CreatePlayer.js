@@ -23,7 +23,7 @@ import Spinner from "./Ellipsis-3.6s-51px.gif";
 const CreatePlayer = () => {
     const { handelSetFormInfo, formState } = useReport();
     const { currentUser } = useAuth();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const firstName = useRef("");
     const lastName = useRef("");
@@ -37,10 +37,12 @@ const CreatePlayer = () => {
     const strength = useRef("");
     const weakness = useRef("");
     const foot = useRef("");
+    const age = useRef("");
+    const currentAbility = useRef("");
 
     const handelFormInfo = () => {
         handelSetFormInfo("firstName", firstName.current.value);
-        handelSetFormInfo("secondName", lastName.current.value);
+        handelSetFormInfo("lastName", lastName.current.value);
         handelSetFormInfo("description", description.current.value);
         handelSetFormInfo("division", division.current.value);
         handelSetFormInfo("team", team.current.value);
@@ -51,6 +53,8 @@ const CreatePlayer = () => {
         handelSetFormInfo("strength", strength.current.value);
         handelSetFormInfo("weakness", weakness.current.value);
         handelSetFormInfo("foot", foot.current.value);
+        handelSetFormInfo("age", age.current.value);
+        handelSetFormInfo("currentAbility", currentAbility.current.value);
     };
 
     const onSubmit = async () => {
@@ -222,6 +226,40 @@ const CreatePlayer = () => {
                             </PlayerSelect>
                         </FormContainer>
                         <FormContainer>
+                            <StyledLabel>Current Ability</StyledLabel>
+                            <PlayerSelect
+                                ref={currentAbility}
+                                onChange={handelFormInfo}
+                                name="currentAbility"
+                            >
+                                <PlayerOption
+                                    disabled
+                                    selected
+                                    value="Position"
+                                >
+                                    Current Ability
+                                </PlayerOption>
+                                <PlayerOption value="Good for Division 3">
+                                    Good for Division 3
+                                </PlayerOption>
+                                <PlayerOption value="Good for Division 2">
+                                    Good for Division 2
+                                </PlayerOption>
+                                <PlayerOption value="Good for Division 1">
+                                    Good for Division 1
+                                </PlayerOption>
+                                <PlayerOption value="Good for  Superettan">
+                                    Good for Superettan
+                                </PlayerOption>
+                                <PlayerOption value="Good for Allsvenskan">
+                                    Good for Allsvenskan
+                                </PlayerOption>
+                                <PlayerOption value="Star in Allsvenskan">
+                                    Star in Allsvenskan
+                                </PlayerOption>
+                            </PlayerSelect>
+                        </FormContainer>
+                        <FormContainer>
                             <StyledLabel>Potential</StyledLabel>
                             <PlayerSelect
                                 ref={potential}
@@ -235,11 +273,24 @@ const CreatePlayer = () => {
                                 >
                                     Potential
                                 </PlayerOption>
-                                <PlayerOption value="1">1</PlayerOption>
-                                <PlayerOption value="2">2</PlayerOption>
-                                <PlayerOption value="3">3</PlayerOption>
-                                <PlayerOption value="4">4</PlayerOption>
-                                <PlayerOption value="5">5</PlayerOption>
+                                <PlayerOption value="Good for Division 3">
+                                    Good for Division 3
+                                </PlayerOption>
+                                <PlayerOption value="Good for Division 2">
+                                    Good for Division 2
+                                </PlayerOption>
+                                <PlayerOption value="Good for Division 1">
+                                    Good for Division 1
+                                </PlayerOption>
+                                <PlayerOption value="Good for  Superettan">
+                                    Good for Superettan
+                                </PlayerOption>
+                                <PlayerOption value="Good for Allsvenskan">
+                                    Good for Allsvenskan
+                                </PlayerOption>
+                                <PlayerOption value="Star in Allsvenskan">
+                                    Star in Allsvenskan
+                                </PlayerOption>
                             </PlayerSelect>
                         </FormContainer>
                         <FormContainer>
@@ -268,6 +319,40 @@ const CreatePlayer = () => {
                             </PlayerSelect>
                         </FormContainer>
                         <FormContainer>
+                            <FormContainer>
+                                <StyledLabel>Age</StyledLabel>
+                                <PlayerSelect
+                                    ref={age}
+                                    onChange={handelFormInfo}
+                                    name="age"
+                                >
+                                    <PlayerOption disabled selected value="age">
+                                        Age
+                                    </PlayerOption>
+                                    <PlayerOption
+                                        value="17"
+                                        aria-required="true"
+                                    >
+                                        17
+                                    </PlayerOption>
+                                    <PlayerOption value="18">18</PlayerOption>
+                                    <PlayerOption value="19">19</PlayerOption>
+                                    <PlayerOption value="20">20</PlayerOption>
+                                    <PlayerOption value="21">21</PlayerOption>
+                                    <PlayerOption value="22">22</PlayerOption>
+                                    <PlayerOption value="23">23</PlayerOption>
+                                    <PlayerOption value="24">24</PlayerOption>
+                                    <PlayerOption value="25">25</PlayerOption>
+                                    <PlayerOption value="26">26</PlayerOption>
+                                    <PlayerOption value="27">27</PlayerOption>
+                                    <PlayerOption value="28">28</PlayerOption>
+                                    <PlayerOption value="29">29</PlayerOption>
+                                    <PlayerOption value="30">30</PlayerOption>
+                                    <PlayerOption value="31">31</PlayerOption>
+                                    <PlayerOption value="32">32</PlayerOption>
+                                    <PlayerOption value="33">33</PlayerOption>
+                                </PlayerSelect>
+                            </FormContainer>
                             <StyledLabel>Strength</StyledLabel>
                             <PlayerInputFull
                                 ref={strength}

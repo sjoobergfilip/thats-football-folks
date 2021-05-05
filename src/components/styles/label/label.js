@@ -36,6 +36,7 @@ export const PlayerInput = styled.input`
     border: none;
     border-bottom: 2px solid ${({ theme }) => theme.colors.Yellow};
     outline-width: 0;
+    outline: none;
 `;
 export const PlayerInputFull = styled.input`
     max-width: 100%;
@@ -46,6 +47,7 @@ export const PlayerInputFull = styled.input`
     border: none;
     border-bottom: 2px solid ${({ theme }) => theme.colors.Yellow};
     outline-width: 0;
+    outline: none;
 `;
 export const PlayerSelect = styled.select`
     max-width: 600px;
@@ -56,6 +58,7 @@ export const PlayerSelect = styled.select`
     border: none;
     border-bottom: 2px solid ${({ theme }) => theme.colors.Yellow};
     outline-width: 0;
+    outline: none;
 `;
 export const PlayerOption = styled.option`
     color: ${({ theme }) => theme.colors.Black};

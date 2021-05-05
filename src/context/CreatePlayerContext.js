@@ -6,11 +6,13 @@ export const useReport = () => useContext(CreatePlayerContext);
 const initialReportData = {
     firstName: "",
     lastName: "",
+    age: "",
     description: "",
     division: "",
     team: "",
     position: "",
     coverage: "",
+    currentAbility: "",
     potential: "",
     contract: "",
     strength: "",

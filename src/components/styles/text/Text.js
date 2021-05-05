@@ -6,3 +6,11 @@ export const HeroTextOutline = styled.h1`
     text-transform: uppercase;
     margin: 10px 15px;
 `;
+
+export const BigText = styled.h2`
+    font-size: 1.3rem;
+`;
+export const TeamText = styled.h2`
+    font-size: 1rem;
+    margin-right: 10px;
+`;
