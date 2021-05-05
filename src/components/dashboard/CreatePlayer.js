@@ -26,7 +26,7 @@ const CreatePlayer = () => {
     const [loading, setLoading] = useState(true);
 
     const firstName = useRef("");
-    const secondName = useRef("");
+    const lastName = useRef("");
     const description = useRef("");
     const division = useRef("");
     const team = useRef("");
@@ -40,7 +40,7 @@ const CreatePlayer = () => {
 
     const handelFormInfo = () => {
         handelSetFormInfo("firstName", firstName.current.value);
-        handelSetFormInfo("secondName", secondName.current.value);
+        handelSetFormInfo("secondName", lastName.current.value);
         handelSetFormInfo("description", description.current.value);
         handelSetFormInfo("division", division.current.value);
         handelSetFormInfo("team", team.current.value);
@@ -91,9 +91,9 @@ const CreatePlayer = () => {
                                 />
                             </FormContainer>
                             <FormContainer>
-                                <StyledLabel>Second Name</StyledLabel>
+                                <StyledLabel>Last Name</StyledLabel>
                                 <PlayerInput
-                                    ref={secondName}
+                                    ref={lastName}
                                     onChange={handelFormInfo}
                                     type="text"
                                     placeholder="Namesson"

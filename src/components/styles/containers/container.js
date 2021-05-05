@@ -81,3 +81,25 @@ export const FormContainer = styled.div`
     margin-bottom: 20px;
     color: ${({ theme }) => theme.colors.Yellow};
 `;
+
+export const Filter = styled.div`
+    max-width: 760px;
+    width: 100%;
+    height: 35px;
+
+    border: 1px solid ${({ theme }) => theme.colors.Yellow};
+    border-radius: 6px;
+    margin: 40px auto 0 auto;
+`;
+export const PlayersContainer = styled.div`
+    max-width: 760px;
+    margin: 40px auto 0 auto;
+    width: 100%;
+`;
+export const EachPlayer = styled.div`
+    max-width: 760px;
+    height: 100px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+`;
