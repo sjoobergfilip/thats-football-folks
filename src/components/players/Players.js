@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/Firebase";
+import Filter from "./Filter";
 import {
-    Filter,
     PlayersContainer,
     EachPlayer,
     InfoName,
@@ -29,7 +29,7 @@ const Players = () => {
 
     return (
         <>
-            <Filter>Filter</Filter>
+            <Filter />
             {loading ? (
                 <PlayersContainer>
                     <h2>Laddar spelare......</h2>
@@ -58,9 +58,9 @@ const Players = () => {
                                         </TeamText>
                                     </InfoClub>
                                 </EachPlayer>
-                                <Collapsible>
+                                {/* <Collapsible>
                                     {player.formState.description}
-                                </Collapsible>
+                                </Collapsible> */}
                             </>
                         );
                     })}

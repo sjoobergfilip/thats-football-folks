@@ -82,10 +82,15 @@ export const FormContainer = styled.div`
     color: ${({ theme }) => theme.colors.Yellow};
 `;
 
-export const Filter = styled.div`
+export const FormContainerFilter = styled(FormContainer)`
+    width: 110px;
+    margin-left: 15px;
+    margin-top: 10px;
+`;
+
+export const FilterStyle = styled.div`
     max-width: 760px;
     width: 100%;
-    height: 35px;
 
     border: 1px solid ${({ theme }) => theme.colors.Yellow};
     border-radius: 6px;
