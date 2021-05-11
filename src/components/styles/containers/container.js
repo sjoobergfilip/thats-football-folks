@@ -91,6 +91,7 @@ export const FormContainerFilter = styled(FormContainer)`
 export const FilterStyle = styled.div`
     max-width: 760px;
     width: 100%;
+    display: flex;
 
     border: 1px solid ${({ theme }) => theme.colors.Yellow};
     border-radius: 6px;

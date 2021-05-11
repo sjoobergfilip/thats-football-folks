@@ -21,7 +21,6 @@ import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase/Firebase";
 import Spinner from "./Ellipsis-3.6s-51px.gif";
 const CreatePlayer = () => {
-    const { handelSetFormInfo, formState } = useReport();
     const { currentUser } = useAuth();
     const [loading, setLoading] = useState(false);
 
@@ -40,28 +39,24 @@ const CreatePlayer = () => {
     const age = useRef("");
     const currentAbility = useRef("");
 
-    const handelFormInfo = () => {
-        handelSetFormInfo("firstName", firstName.current.value);
-        handelSetFormInfo("lastName", lastName.current.value);
-        handelSetFormInfo("description", description.current.value);
-        handelSetFormInfo("division", division.current.value);
-        handelSetFormInfo("team", team.current.value);
-        handelSetFormInfo("position", position.current.value);
-        handelSetFormInfo("coverage", coverage.current.value);
-        handelSetFormInfo("potential", potential.current.value);
-        handelSetFormInfo("contract", contract.current.value);
-        handelSetFormInfo("strength", strength.current.value);
-        handelSetFormInfo("weakness", weakness.current.value);
-        handelSetFormInfo("foot", foot.current.value);
-        handelSetFormInfo("age", age.current.value);
-        handelSetFormInfo("currentAbility", currentAbility.current.value);
-    };
-
     const onSubmit = async () => {
         setLoading(true);
         try {
             await db.collection("players").add({
-                formState,
+                firstName: firstName.current.value,
+                lastName: lastName.current.value,
+                description: description.current.value,
+                division: division.current.value,
+                team: team.current.value,
+                position: position.current.value,
+                coverage: coverage.current.value,
+                potential: potential.current.value,
+                contract: contract.current.value,
+                strength: strength.current.value,
+                weakness: weakness.current.value,
+                foot: foot.current.value,
+                age: age.current.value,
+                currentAbility: currentAbility.current.value,
                 owner: currentUser.uid,
             });
         } catch (e) {
@@ -91,14 +86,12 @@ const CreatePlayer = () => {
                                     placeholder="Name"
                                     firstName="firstName"
                                     ref={firstName}
-                                    onChange={handelFormInfo}
                                 />
                             </FormContainer>
                             <FormContainer>
                                 <StyledLabel>Last Name</StyledLabel>
                                 <PlayerInput
                                     ref={lastName}
-                                    onChange={handelFormInfo}
                                     type="text"
                                     placeholder="Namesson"
                                 />
@@ -110,16 +103,11 @@ const CreatePlayer = () => {
                                 type="text"
                                 placeholder="Description"
                                 ref={description}
-                                onChange={handelFormInfo}
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Division</StyledLabel>
-                            <PlayerSelect
-                                ref={division}
-                                onChange={handelFormInfo}
-                                name="division"
-                            >
+                            <PlayerSelect ref={division} name="division">
                                 <PlayerOption
                                     disabled
                                     selected
@@ -151,18 +139,13 @@ const CreatePlayer = () => {
                             <StyledLabel>Team</StyledLabel>
                             <PlayerInputFull
                                 ref={team}
-                                onChange={handelFormInfo}
                                 type="text"
                                 placeholder="Team"
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Position</StyledLabel>
-                            <PlayerSelect
-                                ref={position}
-                                onChange={handelFormInfo}
-                                name="position"
-                            >
+                            <PlayerSelect ref={position} name="position">
                                 <PlayerOption
                                     disabled
                                     selected
@@ -199,11 +182,7 @@ const CreatePlayer = () => {
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Coverage</StyledLabel>
-                            <PlayerSelect
-                                ref={coverage}
-                                onChange={handelFormInfo}
-                                name="coverage"
-                            >
+                            <PlayerSelect ref={coverage} name="coverage">
                                 <PlayerOption
                                     disabled
                                     selected
@@ -229,7 +208,6 @@ const CreatePlayer = () => {
                             <StyledLabel>Current Ability</StyledLabel>
                             <PlayerSelect
                                 ref={currentAbility}
-                                onChange={handelFormInfo}
                                 name="currentAbility"
                             >
                                 <PlayerOption
@@ -239,33 +217,29 @@ const CreatePlayer = () => {
                                 >
                                     Current Ability
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 3">
+                                <PlayerOption value="1">
                                     Good for Division 3
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 2">
+                                <PlayerOption value="2">
                                     Good for Division 2
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 1">
+                                <PlayerOption value="3">
                                     Good for Division 1
                                 </PlayerOption>
-                                <PlayerOption value="Good for  Superettan">
+                                <PlayerOption value="4">
                                     Good for Superettan
                                 </PlayerOption>
-                                <PlayerOption value="Good for Allsvenskan">
+                                <PlayerOption value="5">
                                     Good for Allsvenskan
                                 </PlayerOption>
-                                <PlayerOption value="Star in Allsvenskan">
+                                <PlayerOption value="6">
                                     Star in Allsvenskan
                                 </PlayerOption>
                             </PlayerSelect>
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Potential</StyledLabel>
-                            <PlayerSelect
-                                ref={potential}
-                                onChange={handelFormInfo}
-                                name="potential"
-                            >
+                            <PlayerSelect ref={potential} name="potential">
                                 <PlayerOption
                                     disabled
                                     selected
@@ -273,33 +247,29 @@ const CreatePlayer = () => {
                                 >
                                     Potential
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 3">
+                                <PlayerOption value="6">
                                     Good for Division 3
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 2">
+                                <PlayerOption value="5">
                                     Good for Division 2
                                 </PlayerOption>
-                                <PlayerOption value="Good for Division 1">
+                                <PlayerOption value="4">
                                     Good for Division 1
                                 </PlayerOption>
-                                <PlayerOption value="Good for  Superettan">
+                                <PlayerOption value="3">
                                     Good for Superettan
                                 </PlayerOption>
-                                <PlayerOption value="Good for Allsvenskan">
+                                <PlayerOption value="2">
                                     Good for Allsvenskan
                                 </PlayerOption>
-                                <PlayerOption value="Star in Allsvenskan">
+                                <PlayerOption value="1">
                                     Star in Allsvenskan
                                 </PlayerOption>
                             </PlayerSelect>
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Contract</StyledLabel>
-                            <PlayerSelect
-                                ref={contract}
-                                onChange={handelFormInfo}
-                                name="Contract"
-                            >
+                            <PlayerSelect ref={contract} name="Contract">
                                 <PlayerOption
                                     disabled
                                     selected
@@ -321,11 +291,7 @@ const CreatePlayer = () => {
                         <FormContainer>
                             <FormContainer>
                                 <StyledLabel>Age</StyledLabel>
-                                <PlayerSelect
-                                    ref={age}
-                                    onChange={handelFormInfo}
-                                    name="age"
-                                >
+                                <PlayerSelect ref={age} name="age">
                                     <PlayerOption disabled selected value="age">
                                         Age
                                     </PlayerOption>
@@ -356,7 +322,6 @@ const CreatePlayer = () => {
                             <StyledLabel>Strength</StyledLabel>
                             <PlayerInputFull
                                 ref={strength}
-                                onChange={handelFormInfo}
                                 type="text"
                                 placeholder="Strength"
                             />
@@ -365,18 +330,13 @@ const CreatePlayer = () => {
                             <StyledLabel>Weakness</StyledLabel>
                             <PlayerInputFull
                                 ref={weakness}
-                                onChange={handelFormInfo}
                                 type="text"
                                 placeholder="Weakness"
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Foot</StyledLabel>
-                            <PlayerSelect
-                                ref={foot}
-                                onChange={handelFormInfo}
-                                name="Foot"
-                            >
+                            <PlayerSelect ref={foot} name="Foot">
                                 <PlayerOption disabled selected value="Foot">
                                     Best foot
                                 </PlayerOption>

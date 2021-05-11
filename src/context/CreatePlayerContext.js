@@ -1,4 +1,4 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import { useContext, createContext, useReducer } from "react";
 
 export const CreatePlayerContext = createContext();
 export const useReport = () => useContext(CreatePlayerContext);

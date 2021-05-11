@@ -13,6 +13,7 @@ import { BigText, TeamText } from "../styles/text/Text";
 
 const Players = () => {
     const [players, setPlayers] = useState([]);
+    const [filteredPlayer, setFilteredPlayer] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -23,47 +24,55 @@ const Players = () => {
                 setLoading(false);
                 snapshot.docs.map((doc) => {
                     setPlayers((prevState) => [...prevState, doc.data()]);
+                    setFilteredPlayer((prevState) => [
+                        ...prevState,
+                        doc.data(),
+                    ]);
                 });
             });
     }, []);
 
     return (
         <>
-            <Filter />
+            <Filter
+                setFilteredPlayer={setFilteredPlayer}
+                players={players}
+                filteredPlayer={filteredPlayer}
+            />
             {loading ? (
                 <PlayersContainer>
                     <h2>Laddar spelare......</h2>
                 </PlayersContainer>
             ) : (
                 <PlayersContainer>
-                    {players.map((player) => {
-                        return (
-                            <>
-                                <EachPlayer>
-                                    <InfoName>
-                                        <BigText>
-                                            {player.formState.firstName}{" "}
-                                            {player.formState.lastName}
-                                        </BigText>
-                                    </InfoName>
-                                    <InfoClub>
-                                        <TeamText>
-                                            {player.formState.age} år
-                                        </TeamText>
-                                        <TeamText>
-                                            {player.formState.position}
-                                        </TeamText>
-                                        <TeamText>
-                                            {player.formState.team}
-                                        </TeamText>
-                                    </InfoClub>
-                                </EachPlayer>
-                                {/* <Collapsible>
-                                    {player.formState.description}
+                    {!filteredPlayer.length ? (
+                        <div>No player match the filter</div>
+                    ) : (
+                        filteredPlayer.map((player) => {
+                            return (
+                                <>
+                                    <EachPlayer>
+                                        <InfoName>
+                                            <BigText>
+                                                {player.firstName}{" "}
+                                                {player.lastName}
+                                            </BigText>
+                                        </InfoName>
+                                        <InfoClub>
+                                            <TeamText>{player.age} år</TeamText>
+                                            <TeamText>
+                                                {player.position}
+                                            </TeamText>
+                                            <TeamText>{player.team}</TeamText>
+                                        </InfoClub>
+                                    </EachPlayer>
+                                    {/* <Collapsible>
+                                    {player.description}
                                 </Collapsible> */}
-                            </>
-                        );
-                    })}
+                                </>
+                            );
+                        })
+                    )}
                 </PlayersContainer>
             )}
         </>
