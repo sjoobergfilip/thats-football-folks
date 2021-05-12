@@ -95,14 +95,14 @@ const Players = () => {
                                             <TeamText>{player.team}</TeamText>
                                         </InfoClub>
                                     </EachPlayer>
-                                    <Collapse
+                                    {/* <Collapse
                                         id={player._id}
                                         isOpened={showMoreInfo}
                                     >
                                         <CollapsibleText>
                                             {player.description}
                                         </CollapsibleText>
-                                    </Collapse>
+                                    </Collapse> */}
                                 </>
                             );
                         })
