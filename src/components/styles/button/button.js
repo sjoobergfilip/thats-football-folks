@@ -37,3 +37,21 @@ export const StyledOutlineButton = styled.button`
         color: ${({ theme }) => theme.colors.Black};
     }
 `;
+
+export const StyledOutlineReset = styled(StyledOutlineButton)`
+    max-width: 200px;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    border: ${({ disabledButton }) => (disabledButton ? "1px" : "2px")} solid
+        ${({ theme }) => theme.colors.Yellow};
+    color: ${({ theme }) => theme.colors.Yellow};
+    &:hover {
+        background-color: ${({ disabledButton, theme }) =>
+            disabledButton ? theme.colors.Black : theme.colors.Yellow};
+        color: ${({ disabledButton, theme }) =>
+            disabledButton ? theme.colors.Yellow : theme.colors.Black};
+        cursor: ${({ disabledButton }) =>
+            disabledButton ? "default" : "pointer"};
+    }
+`;

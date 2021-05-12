@@ -17,7 +17,7 @@ export const StyledInput = styled.input`
 export const StyledLabel = styled.label`
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 `;
 export const StyledForm = styled.form`
     width: 92%;

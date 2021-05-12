@@ -1,15 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import { db } from "../../firebase/Firebase";
+import { StyledOutlineReset } from "../styles/button/button";
 import {
     FilterStyle,
     FormContainerFilter,
+    CloseFilter,
+    CloseFilterContent,
 } from "../styles/containers/container";
-import {
-    PlayerOption,
-    PlayerSelect,
-    StyledLabel,
-    setShowFilter,
-} from "../styles/label/label";
+import { PlayerOption, PlayerSelect, StyledLabel } from "../styles/label/label";
 
 const Filter = ({
     players,
@@ -22,8 +19,20 @@ const Filter = ({
     const currentAbility = useRef("");
     const minAge = useRef("");
     const maxAge = useRef("");
+    const [disabledDivision, setDisabledDivision] = useState(false);
+    const [disabledPosition, setDisabledPosition] = useState(false);
+    const [disabledCurrentAbility, setDisabledCurrentAbility] = useState(false);
+    const [disabledMinAge, setDisabledMinAge] = useState(false);
+    const [disabledMaxAge, setDisabledMaxAge] = useState(false);
+    const [disabledButton, setDisabledButton] = useState(true);
 
     const resetFilter = () => {
+        setDisabledButton(true);
+        setDisabledDivision(false);
+        setDisabledPosition(false);
+        setDisabledCurrentAbility(false);
+        setDisabledMinAge(false);
+        setDisabledMaxAge(false);
         setFilteredPlayer(players);
         division.current.value = "All";
         position.current.value = "All";
@@ -32,67 +41,70 @@ const Filter = ({
         maxAge.current.value = "All";
     };
 
-    const handleFilterChange = () => {
-        console.log(
-            "this is filterdplayers before i set the player to players",
-            filteredPlayer
-        );
-        setFilteredPlayer(players);
-        console.log(
-            "this is filterdplayers after i set the player to players",
-            filteredPlayer
-        );
-        if (division.current.value !== "All") {
-            console.log("i will filter on division");
-            const divFilter = filteredPlayer.filter(
-                (player) => player.division === division.current.value
-            );
-            setFilteredPlayer(divFilter);
-        }
-        if (position.current.value !== "All") {
-            console.log("i will filter on position");
-            const posFilter = filteredPlayer.filter(
-                (player) => player.position === position.current.value
-            );
-            setFilteredPlayer(posFilter);
-        }
-        if (currentAbility.current.value !== "All") {
-            console.log("i will filter on currentAbility");
-            const CA = filteredPlayer.filter(
-                (player) =>
-                    player.currentAbility >= currentAbility.current.value
-            );
-            setFilteredPlayer(CA);
-        }
-
-        if (minAge.current.value !== "All") {
-            console.log("i will filter on minage");
-            const minAgeFilter = filteredPlayer.filter(
-                (player) => player.age >= minAge.current.value
-            );
-            setFilteredPlayer(minAgeFilter);
-        }
-        if (maxAge.current.value !== "All") {
-            console.log("i will filter on maxage");
-            const maxAgeFilter = filteredPlayer.filter(
-                (player) => player.age <= maxAge.current.value
-            );
-            setFilteredPlayer(maxAgeFilter);
-        }
-        if (filteredPlayer.length <= 0) {
-            console.log("no player to filter on");
-        }
+    const closeFilter = () => {
+        setShowFilter(false);
     };
+
+    const handleDivFilter = () => {
+        const divFilter = filteredPlayer.filter(
+            (player) => player.division === division.current.value
+        );
+        setFilteredPlayer(divFilter);
+        setDisabledDivision(true);
+        setDisabledButton(false);
+    };
+    const handlePositionFilter = () => {
+        const posFilter = filteredPlayer.filter(
+            (player) => player.position === position.current.value
+        );
+        setFilteredPlayer(posFilter);
+        setDisabledPosition(true);
+        setDisabledButton(false);
+    };
+    const handleCurrentAbilityFilter = () => {
+        const CAFilter = filteredPlayer.filter(
+            (player) => player.currentAbility >= currentAbility.current.value
+        );
+        setFilteredPlayer(CAFilter);
+        setDisabledCurrentAbility(true);
+        setDisabledButton(false);
+    };
+    const handleMinAgeFilter = () => {
+        const minAgeFilter = filteredPlayer.filter(
+            (player) => player.age >= minAge.current.value
+        );
+        setFilteredPlayer(minAgeFilter);
+        setDisabledMinAge(true);
+        setDisabledButton(false);
+    };
+    const handleMaxAgeFilter = () => {
+        const maxAgeFilter = filteredPlayer.filter(
+            (player) => player.age <= maxAge.current.value
+        );
+        setFilteredPlayer(maxAgeFilter);
+        setDisabledMaxAge(true);
+        setDisabledButton(false);
+    };
+
+    useEffect(() => {
+        console.log("this is my status on button", disabledButton);
+    }, [disabledButton]);
 
     return (
         <>
             <FilterStyle>
+                <CloseFilter>
+                    <CloseFilterContent onClick={closeFilter}>
+                        X
+                    </CloseFilterContent>
+                </CloseFilter>
                 <FormContainerFilter>
                     <StyledLabel>Division</StyledLabel>
                     <PlayerSelect
-                        onChange={handleFilterChange}
+                        onChange={handleDivFilter}
                         ref={division}
                         name="division"
+                        disabled={disabledDivision}
                     >
                         <PlayerOption value="All">All</PlayerOption>
                         <PlayerOption value="Allsvenskan">
@@ -118,9 +130,10 @@ const Filter = ({
                 <FormContainerFilter>
                     <StyledLabel>Position</StyledLabel>
                     <PlayerSelect
-                        onChange={handleFilterChange}
+                        onChange={handlePositionFilter}
                         ref={position}
                         name="position"
+                        disabled={disabledPosition}
                     >
                         <PlayerOption value="All">All</PlayerOption>
                         <PlayerOption value="Goalkeeper">GK</PlayerOption>
@@ -139,10 +152,11 @@ const Filter = ({
                     </PlayerSelect>
                 </FormContainerFilter>
                 <FormContainerFilter>
-                    <StyledLabel>Current Ability (minimum) </StyledLabel>
+                    <StyledLabel>Current Ability (min) </StyledLabel>
                     <PlayerSelect
-                        onChange={handleFilterChange}
+                        onChange={handleCurrentAbilityFilter}
                         ref={currentAbility}
+                        disabled={disabledCurrentAbility}
                         name="currentAbility"
                     >
                         <PlayerOption value="All">All</PlayerOption>
@@ -169,9 +183,10 @@ const Filter = ({
                 <FormContainerFilter>
                     <StyledLabel>Min Age</StyledLabel>
                     <PlayerSelect
-                        onChange={handleFilterChange}
+                        onChange={handleMinAgeFilter}
                         ref={minAge}
                         name="minAge"
+                        disabled={disabledMinAge}
                     >
                         <PlayerOption disabled selected value="All">
                             All
@@ -200,9 +215,10 @@ const Filter = ({
                 <FormContainerFilter>
                     <StyledLabel>Max Age</StyledLabel>
                     <PlayerSelect
-                        onChange={handleFilterChange}
+                        onChange={handleMaxAgeFilter}
                         ref={maxAge}
                         name="minAge"
+                        disabled={disabledMaxAge}
                     >
                         <PlayerOption disabled selected value="All">
                             All
@@ -228,7 +244,14 @@ const Filter = ({
                         <PlayerOption value="33">33</PlayerOption>
                     </PlayerSelect>
                 </FormContainerFilter>
-                <button onClick={resetFilter}>reset</button>
+                <FormContainerFilter>
+                    <StyledOutlineReset
+                        disabledButton={disabledButton}
+                        onClick={resetFilter}
+                    >
+                        Reset Filter
+                    </StyledOutlineReset>
+                </FormContainerFilter>
             </FilterStyle>
         </>
     );

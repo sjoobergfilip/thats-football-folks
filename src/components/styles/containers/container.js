@@ -83,7 +83,8 @@ export const FormContainer = styled.div`
 `;
 
 export const FormContainerFilter = styled(FormContainer)`
-    width: 110px;
+    max-width: 200px;
+    width: 100%;
     margin-left: 15px;
     margin-top: 10px;
 `;
@@ -92,6 +93,8 @@ export const FilterStyle = styled.div`
     max-width: 760px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     border: 1px solid ${({ theme }) => theme.colors.Yellow};
     border-radius: 6px;
@@ -129,4 +132,17 @@ export const InfoName = styled.div`
 export const InfoClub = styled.div`
     align-self: center;
     display: flex;
+`;
+
+export const CloseFilter = styled.div`
+    width: 100%;
+    height: 30px;
+`;
+export const CloseFilterContent = styled.div`
+    float: right;
+    margin-right: 20px;
+    width: 20px;
+    align-self: center;
+    font-size: 25px;
+    cursor: pointer;
 `;

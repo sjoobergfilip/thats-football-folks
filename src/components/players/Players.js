@@ -48,7 +48,9 @@ const Players = () => {
                     setShowFilter={setShowFilter}
                 />
             ) : (
-                <div onClick={handelShowFilter}>Filter</div>
+                <PlayersContainer onClick={handelShowFilter}>
+                    Filter
+                </PlayersContainer>
             )}
 
             {loading ? (
@@ -58,7 +60,10 @@ const Players = () => {
             ) : (
                 <PlayersContainer>
                     {!filteredPlayer.length ? (
-                        <div>No player match the filter</div>
+                        <div>
+                            No player match the filter, reset the filter and try
+                            again
+                        </div>
                     ) : (
                         filteredPlayer.map((player) => {
                             return (
