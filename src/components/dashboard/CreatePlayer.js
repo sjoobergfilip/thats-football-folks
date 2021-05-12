@@ -20,6 +20,7 @@ import { LoadingContainer, SpinnerImg } from "../styles/dashboard/Style";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase/Firebase";
 import Spinner from "./Ellipsis-3.6s-51px.gif";
+import { HiKey } from "react-icons/hi";
 const CreatePlayer = () => {
     const { currentUser } = useAuth();
     const [loading, setLoading] = useState(false);
@@ -38,11 +39,15 @@ const CreatePlayer = () => {
     const foot = useRef("");
     const age = useRef("");
     const currentAbility = useRef("");
+    const randomId = require("random-id");
+    const len = 15;
+    const pattern = "aA0";
 
     const onSubmit = async () => {
         setLoading(true);
         try {
             await db.collection("players").add({
+                _id: randomId(len, pattern),
                 firstName: firstName.current.value,
                 lastName: lastName.current.value,
                 description: description.current.value,

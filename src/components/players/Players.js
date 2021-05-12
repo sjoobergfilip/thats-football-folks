@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/Firebase";
 import Filter from "./Filter";
 import { HiOutlineFilter } from "react-icons/hi";
+import { Collapse } from "react-collapse";
 import {
     PlayersContainer,
     EachPlayer,
     InfoName,
     InfoClub,
-    Collapsible,
     CollapsibleText,
 } from "../styles/containers/container";
 import { BigText, TeamText } from "../styles/text/Text";
@@ -18,6 +18,11 @@ const Players = () => {
     const [filteredPlayer, setFilteredPlayer] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
+    const [showMoreInfo, setShowMoreInfo] = useState(false);
+
+    const handelShowMoreInfo = () => {
+        setShowMoreInfo(!showMoreInfo);
+    };
 
     const handelShowFilter = () => {
         setShowFilter(true);
@@ -70,7 +75,12 @@ const Players = () => {
                         filteredPlayer.map((player) => {
                             return (
                                 <>
-                                    <EachPlayer key={players.owner}>
+                                    <EachPlayer
+                                        onClick={() =>
+                                            handelShowMoreInfo(player._id)
+                                        }
+                                        key={players._id}
+                                    >
                                         <InfoName>
                                             <BigText>
                                                 {player.firstName}{" "}
@@ -85,11 +95,14 @@ const Players = () => {
                                             <TeamText>{player.team}</TeamText>
                                         </InfoClub>
                                     </EachPlayer>
-                                    <Collapsible>
+                                    <Collapse
+                                        id={player._id}
+                                        isOpened={showMoreInfo}
+                                    >
                                         <CollapsibleText>
                                             {player.description}
                                         </CollapsibleText>
-                                    </Collapsible>
+                                    </Collapse>
                                 </>
                             );
                         })
