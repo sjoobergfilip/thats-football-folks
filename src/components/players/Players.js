@@ -15,6 +15,12 @@ const Players = () => {
     const [players, setPlayers] = useState([]);
     const [filteredPlayer, setFilteredPlayer] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [showFilter, setShowFilter] = useState(false);
+
+    const handelShowFilter = () => {
+        setShowFilter(true);
+        setFilteredPlayer(players);
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -34,14 +40,20 @@ const Players = () => {
 
     return (
         <>
-            <Filter
-                setFilteredPlayer={setFilteredPlayer}
-                players={players}
-                filteredPlayer={filteredPlayer}
-            />
+            {showFilter ? (
+                <Filter
+                    setFilteredPlayer={setFilteredPlayer}
+                    players={players}
+                    filteredPlayer={filteredPlayer}
+                    setShowFilter={setShowFilter}
+                />
+            ) : (
+                <div onClick={handelShowFilter}>Filter</div>
+            )}
+
             {loading ? (
                 <PlayersContainer>
-                    <h2>Laddar spelare......</h2>
+                    <h2 onClick={handelShowFilter}>Laddar spelare......</h2>
                 </PlayersContainer>
             ) : (
                 <PlayersContainer>

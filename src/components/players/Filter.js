@@ -4,95 +4,96 @@ import {
     FilterStyle,
     FormContainerFilter,
 } from "../styles/containers/container";
-import { PlayerOption, PlayerSelect, StyledLabel } from "../styles/label/label";
+import {
+    PlayerOption,
+    PlayerSelect,
+    StyledLabel,
+    setShowFilter,
+} from "../styles/label/label";
 
-const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
-    const [queryArr, setQueryArr] = useState([]);
+const Filter = ({
+    players,
+    filteredPlayer,
+    setFilteredPlayer,
+    setShowFilter,
+}) => {
     const division = useRef("");
     const position = useRef("");
     const currentAbility = useRef("");
     const minAge = useRef("");
     const maxAge = useRef("");
 
-    const handelFilter = () => {
-        setQueryArr([]);
+    const resetFilter = () => {
+        setFilteredPlayer(players);
+        division.current.value = "All";
+        position.current.value = "All";
+        currentAbility.current.value = "All";
+        minAge.current.value = "All";
+        maxAge.current.value = "All";
+    };
+
+    const handleFilterChange = () => {
+        console.log(
+            "this is filterdplayers before i set the player to players",
+            filteredPlayer
+        );
+        setFilteredPlayer(players);
+        console.log(
+            "this is filterdplayers after i set the player to players",
+            filteredPlayer
+        );
         if (division.current.value !== "All") {
-            let query = "division";
-            let form = "==";
-            let value = division.current.value;
-            let queryObj = {
-                query,
-                form,
-                value,
-            };
-            setQueryArr((prevQuery) => [...prevQuery, queryObj]);
+            console.log("i will filter on division");
+            const divFilter = filteredPlayer.filter(
+                (player) => player.division === division.current.value
+            );
+            setFilteredPlayer(divFilter);
         }
         if (position.current.value !== "All") {
-            let query = "position";
-            let form = "==";
-            let value = position.current.value;
-            let queryObj = {
-                query,
-                form,
-                value,
-            };
-            setQueryArr((prevQuery) => [...prevQuery, queryObj]);
+            console.log("i will filter on position");
+            const posFilter = filteredPlayer.filter(
+                (player) => player.position === position.current.value
+            );
+            setFilteredPlayer(posFilter);
         }
         if (currentAbility.current.value !== "All") {
-            let query = "currentAbility";
-            let form = ">=";
-            let value = currentAbility.current.value;
-            let queryObj = {
-                query,
-                form,
-                value,
-            };
-            setQueryArr((prevQuery) => [...prevQuery, queryObj]);
+            console.log("i will filter on currentAbility");
+            const CA = filteredPlayer.filter(
+                (player) =>
+                    player.currentAbility >= currentAbility.current.value
+            );
+            setFilteredPlayer(CA);
         }
 
         if (minAge.current.value !== "All") {
-            let query = "age";
-            let form = ">=";
-            let value = minAge.current.value;
-            let queryObj = {
-                query,
-                form,
-                value,
-            };
-            setQueryArr((prevQuery) => [...prevQuery, queryObj]);
+            console.log("i will filter on minage");
+            const minAgeFilter = filteredPlayer.filter(
+                (player) => player.age >= minAge.current.value
+            );
+            setFilteredPlayer(minAgeFilter);
         }
         if (maxAge.current.value !== "All") {
-            let query = "age";
-            let form = "<=";
-            let value = maxAge.current.value;
-            let queryObj = {
-                query,
-                form,
-                value,
-            };
-            setQueryArr((prevQuery) => [...prevQuery, queryObj]);
+            console.log("i will filter on maxage");
+            const maxAgeFilter = filteredPlayer.filter(
+                (player) => player.age <= maxAge.current.value
+            );
+            setFilteredPlayer(maxAgeFilter);
+        }
+        if (filteredPlayer.length <= 0) {
+            console.log("no player to filter on");
         }
     };
-
-    useEffect(() => {
-        (async () => {
-            if (queryArr.length) {
-                const dbRef = db.collection("players");
-                const dbQuery = await queryArr.forEach((query) => {
-                    dbRef.where(query.query, query.form, query.value);
-                });
-                const dbProm = await dbQuery.get();
-                console.log(dbProm.docs);
-            }
-        })();
-    }, [queryArr]);
 
     return (
         <>
             <FilterStyle>
                 <FormContainerFilter>
                     <StyledLabel>Division</StyledLabel>
-                    <PlayerSelect ref={division} name="division">
+                    <PlayerSelect
+                        onChange={handleFilterChange}
+                        ref={division}
+                        name="division"
+                    >
                         <PlayerOption value="All">All</PlayerOption>
                         <PlayerOption value="Allsvenskan">
                             Allsvenskan
@@ -116,7 +117,11 @@ const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
                 </FormContainerFilter>
                 <FormContainerFilter>
                     <StyledLabel>Position</StyledLabel>
-                    <PlayerSelect ref={position} name="position">
+                    <PlayerSelect
+                        onChange={handleFilterChange}
+                        ref={position}
+                        name="position"
+                    >
                         <PlayerOption value="All">All</PlayerOption>
                         <PlayerOption value="Goalkeeper">GK</PlayerOption>
                         <PlayerOption value="Right Back">RB</PlayerOption>
@@ -135,7 +140,11 @@ const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
                 </FormContainerFilter>
                 <FormContainerFilter>
                     <StyledLabel>Current Ability (minimum) </StyledLabel>
-                    <PlayerSelect ref={currentAbility} name="currentAbility">
+                    <PlayerSelect
+                        onChange={handleFilterChange}
+                        ref={currentAbility}
+                        name="currentAbility"
+                    >
                         <PlayerOption value="All">All</PlayerOption>
                         <PlayerOption value="1">
                             Good for Division 3
@@ -159,7 +168,11 @@ const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
                 </FormContainerFilter>
                 <FormContainerFilter>
                     <StyledLabel>Min Age</StyledLabel>
-                    <PlayerSelect ref={minAge} name="minAge">
+                    <PlayerSelect
+                        onChange={handleFilterChange}
+                        ref={minAge}
+                        name="minAge"
+                    >
                         <PlayerOption disabled selected value="All">
                             All
                         </PlayerOption>
@@ -186,7 +199,11 @@ const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
                 </FormContainerFilter>
                 <FormContainerFilter>
                     <StyledLabel>Max Age</StyledLabel>
-                    <PlayerSelect ref={maxAge} name="minAge">
+                    <PlayerSelect
+                        onChange={handleFilterChange}
+                        ref={maxAge}
+                        name="minAge"
+                    >
                         <PlayerOption disabled selected value="All">
                             All
                         </PlayerOption>
@@ -211,7 +228,7 @@ const Filter = ({ players, filteredPlayer, setFilteredPlayer }) => {
                         <PlayerOption value="33">33</PlayerOption>
                     </PlayerSelect>
                 </FormContainerFilter>
-                <button onClick={handelFilter}>Applay</button>
+                <button onClick={resetFilter}>reset</button>
             </FilterStyle>
         </>
     );
