@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { StyledOutlineReset } from "../styles/button/button";
+import { HiOutlineXCircle } from "react-icons/hi";
 import {
     FilterStyle,
     FormContainerFilter,
@@ -42,6 +43,7 @@ const Filter = ({
     };
 
     const closeFilter = () => {
+        setFilteredPlayer(players);
         setShowFilter(false);
     };
 
@@ -95,7 +97,7 @@ const Filter = ({
             <FilterStyle>
                 <CloseFilter>
                     <CloseFilterContent onClick={closeFilter}>
-                        X
+                        <HiOutlineXCircle />
                     </CloseFilterContent>
                 </CloseFilter>
                 <FormContainerFilter>

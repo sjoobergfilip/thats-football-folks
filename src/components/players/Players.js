@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/Firebase";
 import Filter from "./Filter";
+import { HiOutlineFilter } from "react-icons/hi";
 import {
     PlayersContainer,
     EachPlayer,
     InfoName,
     InfoClub,
     Collapsible,
+    CollapsibleText,
 } from "../styles/containers/container";
-
 import { BigText, TeamText } from "../styles/text/Text";
+import "./player.css";
 
 const Players = () => {
     const [players, setPlayers] = useState([]);
@@ -49,7 +51,7 @@ const Players = () => {
                 />
             ) : (
                 <PlayersContainer onClick={handelShowFilter}>
-                    Filter
+                    <HiOutlineFilter className="icon" />
                 </PlayersContainer>
             )}
 
@@ -68,7 +70,7 @@ const Players = () => {
                         filteredPlayer.map((player) => {
                             return (
                                 <>
-                                    <EachPlayer>
+                                    <EachPlayer key={players.owner}>
                                         <InfoName>
                                             <BigText>
                                                 {player.firstName}{" "}
@@ -83,9 +85,11 @@ const Players = () => {
                                             <TeamText>{player.team}</TeamText>
                                         </InfoClub>
                                     </EachPlayer>
-                                    {/* <Collapsible>
-                                    {player.description}
-                                </Collapsible> */}
+                                    <Collapsible>
+                                        <CollapsibleText>
+                                            {player.description}
+                                        </CollapsibleText>
+                                    </Collapsible>
                                 </>
                             );
                         })

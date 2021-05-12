@@ -123,6 +123,12 @@ export const Collapsible = styled.div`
     height: 100px;
     margin: 0 auto;
     width: 100%;
+    display: flex;
+`;
+export const CollapsibleText = styled.div`
+    width: 100%;
+    max-width: 300px;
+    margin: 15px 20px;
 `;
 
 export const InfoName = styled.div`
@@ -136,13 +142,13 @@ export const InfoClub = styled.div`
 
 export const CloseFilter = styled.div`
     width: 100%;
-    height: 30px;
+    height: 45px;
 `;
 export const CloseFilterContent = styled.div`
     float: right;
+    margin-top: 4px;
     margin-right: 20px;
-    width: 20px;
     align-self: center;
-    font-size: 25px;
+    font-size: 30px;
     cursor: pointer;
 `;
