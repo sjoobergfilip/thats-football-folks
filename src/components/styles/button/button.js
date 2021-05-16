@@ -55,3 +55,22 @@ export const StyledOutlineReset = styled(StyledOutlineButton)`
             disabledButton ? "default" : "pointer"};
     }
 `;
+
+export const SubmitForm = styled.input`
+    cursor: pointer;
+    margin: 10px 10px 10px 0;
+    max-width: 120px;
+    width: 120px;
+    height: 40px;
+    color: ${({ theme }) => theme.colors.Yellow};
+    background-color: ${({ theme }) => theme.colors.Black};
+    border-radius: 6px;
+    border: 1px solid ${({ theme }) => theme.colors.Yellow};
+    justify-content: center;
+    align-items: center;
+    transition: 0.7s;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.Yellow};
+        color: ${({ theme }) => theme.colors.Black};
+    }
+`;

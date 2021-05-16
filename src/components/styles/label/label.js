@@ -63,3 +63,15 @@ export const PlayerSelect = styled.select`
 export const PlayerOption = styled.option`
     color: ${({ theme }) => theme.colors.Black};
 `;
+export const TextArea = styled.textarea`
+    max-width: 100%;
+    font-size: 1rem;
+    height: 150px;
+    color: ${({ theme }) => theme.colors.Yellow};
+    background-color: transparent;
+    border: none;
+    border: 2px solid ${({ theme }) => theme.colors.Yellow};
+    outline-width: 0;
+    border-radius: 2px;
+    outline: none;
+`;

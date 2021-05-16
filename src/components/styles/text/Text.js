@@ -13,4 +13,11 @@ export const BigText = styled.h2`
 export const TeamText = styled.h2`
     font-size: 1rem;
     margin-right: 10px;
+    margin-bottom: 10px;
+`;
+export const HeroText = styled.h1`
+    font-size: 1.3rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 `;

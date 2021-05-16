@@ -59,10 +59,16 @@ export const DashboardContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.Black};
     filter: brightness(1.75);
 `;
+
+export const BecomeAScoutContainer = styled(DashboardContainer)`
+    width: 100vw;
+    filter: brightness(1);
+`;
 export const ContentContainer = styled.div`
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
+    margin-top: 20px;
 `;
 export const TwoInputContainer = styled.div`
     display: flex;
