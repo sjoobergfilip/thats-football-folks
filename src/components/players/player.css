@@ -4,3 +4,10 @@
     font-size: 2rem;
     cursor: pointer;
 }
+
+.more-Info {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 0.4s ease;
+}

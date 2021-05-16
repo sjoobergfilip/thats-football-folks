@@ -158,3 +158,11 @@ export const CloseFilterContent = styled.div`
     font-size: 30px;
     cursor: pointer;
 `;
+
+export const ContentShowMore = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+export const CollapsibleInfo = styled.div`
+    float: right;
+`;
