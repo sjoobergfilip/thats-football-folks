@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import SideNavBar from "../navbar/SideNavbar";
 import {
     DashboardContainer,
     ContentContainer,
     TwoInputContainer,
     FormContainer,
+    ErrorMsg,
 } from "../styles/containers/container";
 import { HeroTextOutline } from "../styles/text/Text";
 import { StyledOutlineButton } from "../styles/button/button";
-import { useReport } from "../../context/CreatePlayerContext";
 import {
     PlayerInput,
     StyledLabel,
@@ -20,10 +20,11 @@ import { LoadingContainer, SpinnerImg } from "../styles/dashboard/Style";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase/Firebase";
 import Spinner from "./Ellipsis-3.6s-51px.gif";
-import { HiKey } from "react-icons/hi";
+
 const CreatePlayer = () => {
     const { currentUser } = useAuth();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const firstName = useRef("");
     const lastName = useRef("");
@@ -44,7 +45,83 @@ const CreatePlayer = () => {
     const pattern = "aA0";
 
     const onSubmit = async () => {
+        window.scrollTo(0, 0);
         setLoading(true);
+        setError(false);
+
+        if (firstName.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (lastName.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (description.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (division.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (team.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (position.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (coverage.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (potential.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (contract.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (strength.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (weakness.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+
+        if (foot.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        if (age.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+
+        if (currentAbility.current.value === "") {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+
         try {
             await db.collection("players").add({
                 _id: randomId(len, pattern),
@@ -75,6 +152,7 @@ const CreatePlayer = () => {
             <SideNavBar />
             <DashboardContainer>
                 <HeroTextOutline>Add a new player</HeroTextOutline>
+                {error && <ErrorMsg>Please Fill in all felid</ErrorMsg>}
                 {loading ? (
                     <LoadingContainer>
                         <h3>Creating player</h3>
@@ -91,6 +169,7 @@ const CreatePlayer = () => {
                                     placeholder="Name"
                                     firstName="firstName"
                                     ref={firstName}
+                                    required
                                 />
                             </FormContainer>
                             <FormContainer>
@@ -99,6 +178,7 @@ const CreatePlayer = () => {
                                     ref={lastName}
                                     type="text"
                                     placeholder="Namesson"
+                                    required
                                 />
                             </FormContainer>
                         </TwoInputContainer>
@@ -108,16 +188,13 @@ const CreatePlayer = () => {
                                 type="text"
                                 placeholder="Description"
                                 ref={description}
+                                required
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Division</StyledLabel>
                             <PlayerSelect ref={division} name="division">
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="division"
-                                >
+                                <PlayerOption disabled selected required>
                                     Division
                                 </PlayerOption>
                                 <PlayerOption value="Allsvenskan">
@@ -146,16 +223,13 @@ const CreatePlayer = () => {
                                 ref={team}
                                 type="text"
                                 placeholder="Team"
+                                required
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Position</StyledLabel>
                             <PlayerSelect ref={position} name="position">
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="Position"
-                                >
+                                <PlayerOption disabled selected required>
                                     Position
                                 </PlayerOption>
                                 <PlayerOption value="Goalkeeper">
@@ -188,11 +262,7 @@ const CreatePlayer = () => {
                         <FormContainer>
                             <StyledLabel>Coverage</StyledLabel>
                             <PlayerSelect ref={coverage} name="coverage">
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="coverage"
-                                >
+                                <PlayerOption disabled selected required>
                                     Coverage
                                 </PlayerOption>
                                 <PlayerOption value="1-3">
@@ -211,15 +281,8 @@ const CreatePlayer = () => {
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Current Ability</StyledLabel>
-                            <PlayerSelect
-                                ref={currentAbility}
-                                name="currentAbility"
-                            >
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="Position"
-                                >
+                            <PlayerSelect ref={currentAbility}>
+                                <PlayerOption disabled selected required>
                                     Current Ability
                                 </PlayerOption>
                                 <PlayerOption value="1">
@@ -245,11 +308,7 @@ const CreatePlayer = () => {
                         <FormContainer>
                             <StyledLabel>Potential</StyledLabel>
                             <PlayerSelect ref={potential} name="potential">
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="Position"
-                                >
+                                <PlayerOption disabled selected required>
                                     Potential
                                 </PlayerOption>
                                 <PlayerOption value="6">
@@ -275,11 +334,7 @@ const CreatePlayer = () => {
                         <FormContainer>
                             <StyledLabel>Contract</StyledLabel>
                             <PlayerSelect ref={contract} name="Contract">
-                                <PlayerOption
-                                    disabled
-                                    selected
-                                    value="Position"
-                                >
+                                <PlayerOption disabled selected required>
                                     Contract to
                                 </PlayerOption>
                                 <PlayerOption value="2021" aria-required="true">
@@ -297,7 +352,7 @@ const CreatePlayer = () => {
                             <FormContainer>
                                 <StyledLabel>Age</StyledLabel>
                                 <PlayerSelect ref={age} name="age">
-                                    <PlayerOption disabled selected value="age">
+                                    <PlayerOption disabled selected>
                                         Age
                                     </PlayerOption>
                                     <PlayerOption
@@ -329,6 +384,7 @@ const CreatePlayer = () => {
                                 ref={strength}
                                 type="text"
                                 placeholder="Strength"
+                                required
                             />
                         </FormContainer>
                         <FormContainer>
@@ -337,17 +393,16 @@ const CreatePlayer = () => {
                                 ref={weakness}
                                 type="text"
                                 placeholder="Weakness"
+                                required
                             />
                         </FormContainer>
                         <FormContainer>
                             <StyledLabel>Foot</StyledLabel>
                             <PlayerSelect ref={foot} name="Foot">
-                                <PlayerOption disabled selected value="Foot">
+                                <PlayerOption disabled selected>
                                     Best foot
                                 </PlayerOption>
-                                <PlayerOption value="left" aria-required="true">
-                                    Left
-                                </PlayerOption>
+                                <PlayerOption value="left">Left</PlayerOption>
                                 <PlayerOption value="right">Right</PlayerOption>
                             </PlayerSelect>
                         </FormContainer>

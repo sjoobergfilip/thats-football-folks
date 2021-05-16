@@ -166,3 +166,14 @@ export const ContentShowMore = styled.div`
 export const CollapsibleInfo = styled.div`
     float: right;
 `;
+
+export const ErrorMsg = styled.div`
+    border: 1px solid #e84548;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 0;
+    color: #e84548;
+    border-radius: 5px;
+`;

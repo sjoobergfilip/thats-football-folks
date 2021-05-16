@@ -27,9 +27,9 @@ const SideNavbar = () => {
                 <Link to="/dashboard/create-player">
                     <AiOutlineUserAdd color="#ffe700" size="1.8rem" />
                 </Link>
-                <Link to="/dashboard/my-players">
+                {/* <Link to="/dashboard/my-players">
                     <AiOutlineIdcard color="#ffe700" size="1.8rem" />
-                </Link>
+                </Link> */}
             </NavSideBarContent>
             <NavSideBarContent>
                 <p onClick={handleLogOut}>
