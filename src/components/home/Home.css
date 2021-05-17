@@ -14,6 +14,7 @@
 .slogan-container {
     width: 400px;
     padding-left: 100px;
+    height: 500px;
 }
 
 .slogan-container h1 {
@@ -24,4 +25,27 @@
 }
 .slogan-container p {
     font-family: "Work Sans", sans-serif;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    cursor: pointer;
+    margin: 10px 10px 10px 0;
+    max-width: 120px;
+    width: 120px;
+    height: 40px;
+    color: #ffe700;
+    background-color: #080e13;
+    border-radius: 6px;
+    border: 1px solid #ffe700;
+    justify-content: center;
+    align-items: center;
+    transition: 0.7s;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.buttons:hover {
+    background-color: #ffe700;
+    color: #080e13;
 }

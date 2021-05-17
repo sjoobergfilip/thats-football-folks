@@ -2,6 +2,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import BecomeAScout from "./components/becomeAScout/BecomeAScout";
+import About from "./components/about/About";
 import Players from "./components/players/Players";
 import NotFound from "./components/notfound/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -28,6 +29,9 @@ const App = () => {
                         </Route>
                         <Route path="/become-a-scout">
                             <BecomeAScout />
+                        </Route>
+                        <Route path="/about">
+                            <About />
                         </Route>
                         <Route path="/login">
                             <Login />

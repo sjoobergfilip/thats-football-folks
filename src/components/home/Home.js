@@ -1,8 +1,5 @@
 import React from "react";
-import {
-    StyledFilledButton,
-    StyledOutlineButton,
-} from "../styles/button/button";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
@@ -17,8 +14,12 @@ const Home = () => {
                         retro selvage iceland. Mixtape snackwave taxidermy
                         waistcoat, farm-to-table
                     </p>
-                    <StyledFilledButton>Players</StyledFilledButton>
-                    <StyledOutlineButton>Become A Scout</StyledOutlineButton>
+                    <Link className="buttons" to="/players">
+                        Players
+                    </Link>
+                    <Link className="buttons" to="/become-a-scout">
+                        Become a Scout
+                    </Link>
                 </div>
             </div>
         </>
