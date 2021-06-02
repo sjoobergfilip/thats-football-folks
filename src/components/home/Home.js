@@ -7,7 +7,7 @@ const Home = () => {
         <>
             <div className="hero-container">
                 <div className="slogan-container">
-                    <h1>We are That's football folks!</h1>
+                    <h1>We are Scouting Inside</h1>
                     <p>
                         I'm baby bicycle rights la croix swag, try-hard drinking
                         vinegar authentic four loko jean shorts banh mi tattooed
